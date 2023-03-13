@@ -1,0 +1,106 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="1448" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="LanguageDetectionInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyAbstractClassInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyAssignmentToLoopOrWithParameterInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyAttributeOutsideInitInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyClassHasNoInitInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyDictCreationInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyGlobalUndefinedInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyIncorrectDocstringInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyMethodMayBeStaticInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyMethodParametersInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyNoneFunctionAssignmentInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="45">
+            <item index="0" class="java.lang.String" itemvalue="thop" />
+            <item index="1" class="java.lang.String" itemvalue="pycocotools" />
+            <item index="2" class="java.lang.String" itemvalue="win32gui" />
+            <item index="3" class="java.lang.String" itemvalue="tensorboard" />
+            <item index="4" class="java.lang.String" itemvalue="mmcv" />
+            <item index="5" class="java.lang.String" itemvalue="Pillow" />
+            <item index="6" class="java.lang.String" itemvalue="albumentations" />
+            <item index="7" class="java.lang.String" itemvalue="imagecorruptions" />
+            <item index="8" class="java.lang.String" itemvalue="kwarray" />
+            <item index="9" class="java.lang.String" itemvalue="setuptools" />
+            <item index="10" class="java.lang.String" itemvalue="xdoctest" />
+            <item index="11" class="java.lang.String" itemvalue="tqdm" />
+            <item index="12" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="13" class="java.lang.String" itemvalue="torch" />
+            <item index="14" class="java.lang.String" itemvalue="torchvision" />
+            <item index="15" class="java.lang.String" itemvalue="libidn2" />
+            <item index="16" class="java.lang.String" itemvalue="openh264" />
+            <item index="17" class="java.lang.String" itemvalue="libgcc-ng" />
+            <item index="18" class="java.lang.String" itemvalue="gnutls" />
+            <item index="19" class="java.lang.String" itemvalue="ld_impl_linux-64" />
+            <item index="20" class="java.lang.String" itemvalue="nettle" />
+            <item index="21" class="java.lang.String" itemvalue="gmp" />
+            <item index="22" class="java.lang.String" itemvalue="ncurses" />
+            <item index="23" class="java.lang.String" itemvalue="bzip" />
+            <item index="24" class="java.lang.String" itemvalue="libstdcxx-ng" />
+            <item index="25" class="java.lang.String" itemvalue="libgfortran4" />
+            <item index="26" class="java.lang.String" itemvalue="libgomp" />
+            <item index="27" class="java.lang.String" itemvalue="libunistring" />
+            <item index="28" class="java.lang.String" itemvalue="libgfortran-ng" />
+            <item index="29" class="java.lang.String" itemvalue="libtasn1" />
+            <item index="30" class="java.lang.String" itemvalue="lame" />
+            <item index="31" class="java.lang.String" itemvalue="readline" />
+            <item index="32" class="java.lang.String" itemvalue="scikit-image" />
+            <item index="33" class="java.lang.String" itemvalue="paddlepaddle" />
+            <item index="34" class="java.lang.String" itemvalue="gradio" />
+            <item index="35" class="java.lang.String" itemvalue="pillow" />
+            <item index="36" class="java.lang.String" itemvalue="numpy" />
+            <item index="37" class="java.lang.String" itemvalue="paddlehub" />
+            <item index="38" class="java.lang.String" itemvalue="networkx" />
+            <item index="39" class="java.lang.String" itemvalue="tifffile" />
+            <item index="40" class="java.lang.String" itemvalue="imageio" />
+            <item index="41" class="java.lang.String" itemvalue="threadpoolctl" />
+            <item index="42" class="java.lang.String" itemvalue="scikit-learn" />
+            <item index="43" class="java.lang.String" itemvalue="colorama" />
+            <item index="44" class="java.lang.String" itemvalue="kiwisolver" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N803" />
+          <option value="N802" />
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyProtectedMemberInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyRedundantParenthesesInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyShadowingNamesInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnboundLocalVariableInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="bool.sum" />
+          <option value="autoaim.utils.virtual_mouse.windll" />
+          <option value="cv2.*" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnusedLocalInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
