@@ -35,7 +35,7 @@ class SICA(nn.Module):
         self.conv_out2 = FusionConv2d(in_channel + depth, depth, 3, relu=True)
         self.conv_out3 = FusionConv2d(depth, depth, 3, relu=True)
         self.conv_out4 = FusionConv2d(depth, out_channel, 1)
-
+        print(in_channel, depth)
         self.threshold = Parameter(torch.tensor([0.5]))
         
         if self.lmap_in is True:

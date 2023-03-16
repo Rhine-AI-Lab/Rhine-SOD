@@ -147,52 +147,57 @@ def main(opt, args):
     params_list = [{'params': backbone_params}, {
         'params': decoder_params, 'lr': opt.Train.Optimizer.lr * 10}]
 
-    config_list = [{
-        'sparsity_per_layer': 0.25,
-        'op_types': ['Conv2d', 'Linear']
-    }, {
-        'exclude': True,
-        'op_names': ['backbone.patch_embed.proj']
-    }]
+    if args.masks is None:
+        config_list = [{
+            'sparsity_per_layer': 0.25,
+            'op_types': ['Conv2d', 'Linear']
+        }, {
+            'exclude': True,
+            'op_partial_names': ['backbone']
+        }]
 
-    traced_optimizer = nni.trace(Adam)(params_list, opt.Train.Optimizer.lr,
-                                       weight_decay=opt.Train.Optimizer.weight_decay)
+        traced_optimizer = nni.trace(Adam)(params_list, opt.Train.Optimizer.lr,
+                                           weight_decay=opt.Train.Optimizer.weight_decay)
 
-    dummy_input = torch.randn(4, 3, 512, 512).to(torch.device('cuda'))
+        dummy_input = torch.randn(2, 3, 384, 384).to(torch.device('cuda'))
 
-    evaluator = TorchEvaluator(training_func, optimizers=traced_optimizer, criterion=criterion,
-                               dummy_input=dummy_input, evaluating_func=evaluating_func)
+        evaluator = TorchEvaluator(training_func, optimizers=traced_optimizer, criterion=criterion,
+                                   dummy_input=dummy_input, evaluating_func=evaluating_func)
 
-    admm_params = {
-        'evaluator': evaluator,
-        'iterations': 5,
-        'training_epochs': 2
-    }
-    sa_params = {
-        'evaluator': evaluator
-    }
+        admm_params = {
+            'evaluator': evaluator,
+            'iterations': 5,
+            'training_epochs': 2
+        }
+        sa_params = {
+            'evaluator': evaluator
+        }
 
-    pruner = AutoCompressPruner(model=model, config_list=config_list, total_iteration=3, admm_params=admm_params,
-                                sa_params=sa_params, log_dir='./log', keep_intermediate_result=True,
-                                evaluator=evaluator, speedup=True)
-    # pruner = LevelPruner(model, config_list)
+        pruner = AutoCompressPruner(model=model, config_list=config_list, total_iteration=3, admm_params=admm_params,
+                                    sa_params=sa_params, log_dir='./log', keep_intermediate_result=True,
+                                    evaluator=evaluator, speedup=False)
+        # pruner = LevelPruner(model, config_list)
 
-    pruner.compress()
-    _, model, masks, _, _ = pruner.get_best_result()
+        pruner.compress()
+        _, model, masks, _, _ = pruner.get_best_result()
+        torch.save(masks, osp.join(opt.Train.Checkpoint.checkpoint_dir, 'masks.pth'))
+
+    else:
+        masks = torch.load(args.masks)
+
+    ModelSpeedup(model, torch.randn(2, 3, 384, 384).to(torch.device('cuda')),
+                     masks).speedup_model()
 
     torch.save(model.state_dict(), osp.join(opt.Train.Checkpoint.checkpoint_dir, 'compressed.pth'))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', type=str, default=r"./weights/RhineSOD.pth", help="weights path")
-    parser.add_argument('--gpu', '-g', action='store_true', default=True)
+    parser.add_argument('--weights', type=str, default=r"./weights/RhineSOD.pth", help="model weights path")
+    parser.add_argument('--masks', type=str, default=r"./weights/masks.pth", help="masks.pth path")
     parser.add_argument('--config', '-c', type=str, default='configs/RhineSOD.yaml')
-    parser.add_argument('--imgsize', type=int, default=320, help='input image size')
-    parser.add_argument('--thres', type=int, default=50)
     parser.add_argument('--original_path', type=str, default=r"G:\ML-Dataset\DUTS-TR\images", help="input image path")
     parser.add_argument('--label_path', type=str, default=r"G:\ML-Dataset\DUTS-TR\masks", help="input image path")
-    parser.add_argument('--mask_path', type=str, default="./outputs/mask", help="output masked path")
     args = parser.parse_args()
 
     opt = load_config(args.config)
